@@ -1,15 +1,8 @@
 <?php
+    include '../../config.php';
     $num = $_POST["num"];
-
-
-    //Configuracion del sql
-    $servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "reclutamiento";
-
 		
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$con=mysqli_connect($host,$user,$pass,$name);
 	if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
         exit;

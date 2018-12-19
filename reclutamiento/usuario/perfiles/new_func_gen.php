@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear ponderacion</title>
+    <title>Crear Funciones General</title>
 </head>
 <body>
-    <h1>Crear ponderacion</h1>
+    <h1>Crear Funciones General</h1>
     <form enctype="multipart/form-data" id = "formCrear" method="POST" >
         <button type="button" onclick="sendData()">Crear</button><br>
         <button onclick="agregarConsideracion(); return false">Agregar Funcion</button><br>

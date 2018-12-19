@@ -28,21 +28,12 @@
 </html>
 
 <?php
+    include '../../config.php';
     if(isset($_POST['crear'])){
         $pr = $_POST['pregunta'];
         $re = $_POST['rep'];
         $ds = $_POST['des'];
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "reclutamiento";
-
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "reclutamiento";
-        
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn=mysqli_connect($host,$user,$pass,$name);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 

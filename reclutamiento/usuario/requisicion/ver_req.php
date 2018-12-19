@@ -11,7 +11,8 @@
     <h1>Requisiciones aprovadas</h1>
     <label ><a href="crear_req.php">Crear requisicion</a></label>
     <?php
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        include '../../config.php';
+        $con=mysqli_connect($host,$user,$pass,$name);
             // Check connection
             if (mysqli_connect_errno())
             {
@@ -38,7 +39,8 @@
     ?>
 
     <h1>Requisiciones en proceso de aprovamiento</h1>
-    <?php        
+    <?php
+            include '../../config.php';        
             $query = "SELECT id,nombre FROM requisicion WHERE autorizacion = 0";
             $result = mysqli_query($con,$query);
             echo "<table border = 1>\n";

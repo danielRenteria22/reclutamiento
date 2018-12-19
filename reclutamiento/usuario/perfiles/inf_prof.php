@@ -10,8 +10,9 @@
 <body>
     <h1>Perfil</h1>
     <?php
+        include '../../config.php';
         $id = $_GET["id"];
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -151,7 +152,7 @@
             echo "      <br><b><th><a href = \"edit_prof.php?id=$perf&idp=$id\">Editar</a></th></b><br/>\n";
 //funciones generales
         echo"<h3>Funciones Generales</h3>";
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -166,7 +167,6 @@
             echo "      <th>Eliminar</th>\n";
             echo "</tr>\n";
             $perfg = $row[0];
-            echo"$perfg aqui";
             $c=1;
             while($row = mysqli_fetch_array($result)){
                 echo "  <tr>\n";
@@ -181,7 +181,7 @@
             echo "      <br><b><th><a href = \"new_func_gen.php?idp=$id\">Nuevo</a></th></b><br/>\n";
 //funciones particulares
         echo"<h3>Funciones Particulares</h3>";
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -211,7 +211,7 @@
 //killer questions
         echo"<h3>Killer Questions</h3>";
         $db_prefix = "";
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -252,6 +252,7 @@
                 $rom=$row[0];
                 $c++;
             }
+            $rom=$row[0];
             echo "</table>\n";
             echo "      <br><b><th><a href = \"new_KQ.php?id=$rom&idp=$id\">Nuevo</a></th></b><br/>\n";
     ?>

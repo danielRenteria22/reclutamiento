@@ -11,8 +11,9 @@
     <form enctype="multipart/form-data" id = "formaAgregar" method="POST" >
     <label>Nombre <input type="text" name="nombre"></label><br>
     <?php
+    			include '../../config.php';
                 //INICIO conexion con la base de datos
-			    $con=mysqli_connect("localhost","root","","reclutamiento");
+			    $con=mysqli_connect($host,$user,$pass,$name);
 			    if (mysqli_connect_errno())
 			    {
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -92,6 +93,7 @@
 </html>
 
 <?php
+	include '../../config.php';
 	if(isset($_POST['crear'])){
 		$nombre = $_POST["nombre"];
 		$empleadorID = $_POST["empleador"];
@@ -124,13 +126,7 @@
 
 		
 		//Insertar la requisison en la base de datos
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "reclutamiento";
-
-		
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		$conn=mysqli_connect($host,$user,$pass,$name);
 		if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
 		} 

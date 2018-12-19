@@ -12,10 +12,11 @@
 <form action="" method="post">
 
 <?php
+    include '../../config.php';
     $id_referencia = $_GET["id_referencia"];
     $preguntas_id = array();
 
-    $conn = mysqli_connect("localhost","root","","reclutamiento");
+    $conn=mysqli_connect($host,$user,$pass,$name);
     if(mysqli_connect_errno($conn))
     {
         echo 'No se pudo hacer la conexión con la base de datos';

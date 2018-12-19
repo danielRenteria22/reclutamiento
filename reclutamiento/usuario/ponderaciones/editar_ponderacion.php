@@ -13,7 +13,7 @@
     <form enctype="multipart/form-data" id = "formEditar" method="POST" >
     
     <?php
-       
+        include '../../config.php';       
         $id = $_GET["id"];
         $GLOBALS['id'] = $id;
         $nombre = $_GET["nombre"];
@@ -21,7 +21,7 @@
 
         echo "<label>Nombre: <input type=\"text\" name = \"nombre\" value = $nombre></label><br>\n";
 
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        $con=mysqli_connect($host,$user,$pass,$name);
 
         //Obtenemos los detalles
         $query = "SELECT nombre_campo,peso,id FROM detalle_ponderacion WHERE id_ponderacion =$id;";

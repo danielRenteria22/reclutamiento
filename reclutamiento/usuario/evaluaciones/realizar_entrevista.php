@@ -12,11 +12,12 @@
 <form action="" method="post">
 
 <?php
+    include '../../config.php';
     $id_entrevista = $_GET["id_entrevista"];
     $id_solicitud = $_GET["id_solicitud"];
     $preguntas_id = array();
 
-    $conn = mysqli_connect("localhost","root","","reclutamiento");
+    $conn=mysqli_connect($host,$user,$pass,$name);
     if(mysqli_connect_errno($conn))
     {
         echo 'No se pudo hacer la conexión con la base de datos';
@@ -43,6 +44,7 @@
 
 
 <?php
+    include '../../config.php';
     if( isset($_POST["guardar_respuestas"]) ){
         $query = "INSERT INTO respuesta_entrevista(id_pregunta_entrevista,respuesta,id_solicitud) VALUES ";
         for($i = 0; $i < $cont; $i++){
@@ -56,7 +58,7 @@
 	    $query = $query . ";";
         echo $query;
 
-        $conn = mysqli_connect("localhost","root","","reclutamiento");
+        $conn=mysqli_connect($host,$user,$pass,$name);
         if(mysqli_connect_errno($conn))
         {
             echo 'No se pudo hacer la conexión con la base de datos';

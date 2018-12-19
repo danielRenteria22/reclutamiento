@@ -16,7 +16,8 @@
     <label>Sueldo Nominal <input type="text" name="sueldo"></label><br>
     <label>Tope de Bonos  <input type="text" name="bonos"></label><br>
     <?php
-			    $con=mysqli_connect("localhost","root","","reclutamiento");
+    			include '../../config.php';
+			    $con=mysqli_connect($host,$user,$pass,$name);
 			    if (mysqli_connect_errno())
 			    {
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -80,12 +81,13 @@
 </html>
 
 <?php
+	include '../../config.php';
 	if(isset($_POST['crear'])){
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
 		$dbname = "reclutamiento";
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		$conn=mysqli_connect($host,$user,$pass,$name);
 
 		$nombre      = $_POST["nombre"];
 		$inicio      = $_POST["inicio"];
@@ -100,7 +102,7 @@
 		$contrato    = $_POST["contrato"];
 		$ponderacion = $_POST["ponderacion"];
 
-$link = mysqli_connect("localhost", "root", "");
+$link = mysqli_connect($host, $user, $pass);
 mysqli_select_db($link, "reclutamiento");
 mysqli_query($link, "INSERT INTO perfil 
 				 		VALUES 	(

@@ -12,16 +12,16 @@
     <h1>Requisicion</h1>
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
+        include '../../config.php';
          $id = $_GET['id'];
          $GLOBALS['id'] = $id;
-         $con=mysqli_connect("localhost","root","","reclutamiento");
+         $con=mysqli_connect($host,$user,$pass,$name);
          // Check connection
          if (mysqli_connect_errno())
          {
              echo "Failed to connect to MySQL: " . mysqli_connect_error();
          }
         
-         //Buscar la informacion de una requisicion
          $query = "SELECT * FROM requisicion WHERE id = $id";
          $result = mysqli_query($con,$query);
          $row = mysqli_fetch_array($result);
@@ -98,6 +98,7 @@
 
     <h1>Estado de requisison</h1>
     <?php
+        include '../../config.php';
         //Muestra los pasos aprovados y los proximos a aprovar
         $query = "SELECT a.id as estadoID,a.fecha,a.autorizacion,b.id_permisos,b.nombre as nombrePaso,c.employid,c.displayname
                   FROM estado_req a 
@@ -161,6 +162,7 @@
 </html>
 
 <?php
+    include '../../config.php';
 	if(isset($_POST['guardar'])){
         echo "Hola";
         $id = $GLOBALS['id'];
@@ -192,14 +194,7 @@
 		//echo $sql . "<br>";
 
 		
-		//Insertar la requisison en la base de datos
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "reclutamiento";
-
-		
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		$conn=mysqli_connect($host,$user,$pass,$name);
 		if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
 		} 
