@@ -1,4 +1,5 @@
 <?php
+        include '../../config.php';
         $num;
         $num = $_POST["num"];
         //Verificar si todos las descripciones tienen texto
@@ -14,7 +15,7 @@
         }
 
         if($todoLleno){
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            $con=mysqli_connect($host,$user,$pass,$name);
             // Check connection
             if (mysqli_connect_errno())
             {
@@ -44,7 +45,7 @@
                     exit;
                     
                 } else {
-                    echo "No se hizo el regidtro en la BD<br />";
+                    echo "No se hizo el registro en la BD<br />";
                     echo mysqli_error ($con);
                 }
       
