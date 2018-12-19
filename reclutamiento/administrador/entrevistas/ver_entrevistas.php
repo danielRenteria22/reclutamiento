@@ -9,7 +9,8 @@
 <body>
     <h1>Entrevistas</h1>
     <?php
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        include '../../config.php';
+        $con=mysqli_connect($host,$user,$pass,$name);
         //Obtenemps todas las ponderaciones
         $query = "SELECT id_entrevista,nombre FROM  entrevista;";
         $resultPonderaciones = mysqli_query($con,$query);

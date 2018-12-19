@@ -11,8 +11,9 @@
 </html>
 
 <?php
+    include '../config.php';
     if(isset($_POST['confg'])){ 
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        $con=mysqli_connect($host,$user,$pass,$name);
 			// Check connection
 			if (mysqli_connect_errno())
 			{

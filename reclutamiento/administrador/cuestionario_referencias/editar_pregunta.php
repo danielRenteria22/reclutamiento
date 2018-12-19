@@ -11,9 +11,10 @@
     <center><h1>Editar pregunta</h1></center>
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
+        include '../../config.php';
         $id = $_GET['id'];
         $GLOBALS['id'] = $id;
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        $con=mysqli_connect($host,$user,$pass,$name);
         // Check connection
         if (mysqli_connect_errno())
         {
@@ -35,8 +36,9 @@
 </html>
 
 <?php
+    include '../../config.php';
     if(isset($_POST['editar'])){
-        $con=mysqli_connect("localhost","root","","reclutamiento");
+        $con=mysqli_connect($host,$user,$pass,$name);
 		// Check connection
 		if (mysqli_connect_errno())
 		{

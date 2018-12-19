@@ -1,4 +1,5 @@
 <?php
+    include '../../config.php';
     $numNuevos = $_POST["nuevos"];
     $numCons = $_POST["num"];
     $id_entrevista = $_POST["id"];
@@ -7,7 +8,7 @@
 
     //Actualizar los detalles que ya habia
     $i = 0;
-    $con=mysqli_connect("localhost","root","","reclutamiento");
+    $con=mysqli_connect($host,$user,$pass,$name);
     if (mysqli_connect_errno()){
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
             exit;

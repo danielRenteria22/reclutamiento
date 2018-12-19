@@ -1,6 +1,7 @@
 <?php
+    include '../../config.php';
     $id = $_GET['id'];
-    $con=mysqli_connect("localhost","root","","reclutamiento");
+    $con=mysqli_connect($host,$user,$pass,$name);
     if (mysqli_connect_errno())
     {
         echo "No se ha podido conectar a la base de datos: " . mysqli_connect_error();

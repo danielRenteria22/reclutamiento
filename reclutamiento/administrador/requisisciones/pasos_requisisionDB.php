@@ -1,4 +1,5 @@
 <?php
+        include '../../config.php';
         $num;
         $num = $_POST["num"];
         
@@ -14,7 +15,7 @@
         }
 
         if($todoLleno){
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            $con=mysqli_connect($host,$user,$pass,$name);
             // Check connection
             if (mysqli_connect_errno())
             {

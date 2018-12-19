@@ -2,7 +2,8 @@
     <body>
         <center><h1>Cuestionario para cancelacion de solicitud</h1></center>
         <?php
-            $con=mysqli_connect("localhost","root","","reclutamiento");
+            include '../../config.php';
+            $con=mysqli_connect($host,$user,$pass,$name);
             // Check connection
             if (mysqli_connect_errno())
             {
