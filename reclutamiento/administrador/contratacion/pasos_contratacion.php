@@ -7,7 +7,8 @@
             <!--<input hidden name = "num" type = "number" id = "num"> -->
             <label>Descripcion del paso <input type="text" name="desc1"></label>
             <?php
-			    $con=mysqli_connect("localhost","root","","reclutamiento");
+                include '../../config.php';
+			    $con=mysqli_connect($host,$user,$pass,$name);
 			    // Check connection
 			    if (mysqli_connect_errno())
 			    {
