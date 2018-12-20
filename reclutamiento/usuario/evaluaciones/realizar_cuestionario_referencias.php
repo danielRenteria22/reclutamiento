@@ -35,6 +35,21 @@
     }
     mysqli_close($conn);
 ?>
+	
+    <p>Calificacion: 
+        <select name="calificacion" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </p>
     <input type="submit" value="Guardar" name = "guardar_respuestas">
 </form>
     
@@ -64,6 +79,15 @@
             exit;
         }
     
+        if (mysqli_query($conn, $query)) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+	    
+	//Agregamos la calificacion a la referencia
+        $calificacion = $_POST["calificacion"];
+        $query = "UPDATE referencias_personal SET calificacion = $calificacion WHERE id = $id_referencia";
         if (mysqli_query($conn, $query)) {
             echo "New record created successfully";
         } else {
