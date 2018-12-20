@@ -4,7 +4,8 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $conn = mysqli_connect("localhost","root","","reclutamiento");
+    include '../../config.php';
+    $conn=mysqli_connect($host,$user,$pass,$name);
     if(mysqli_connect_errno($conn))
     {
         echo 'No se pudo hacer la conexión con la base de datos';
