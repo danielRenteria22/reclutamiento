@@ -12,16 +12,17 @@
     <h1>Requisicion</h1>
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
-        include '../../config.php';
          $id = $_GET['id'];
          $GLOBALS['id'] = $id;
+         include '../../config.php';
          $con=mysqli_connect($host,$user,$pass,$name);
-         // Check connection
+         // Check connection 
          if (mysqli_connect_errno())
          {
              echo "Failed to connect to MySQL: " . mysqli_connect_error();
          }
         
+         //Buscar la informacion de una requisicion
          $query = "SELECT * FROM requisicion WHERE id = $id";
          $result = mysqli_query($con,$query);
          $row = mysqli_fetch_array($result);
@@ -35,29 +36,36 @@
          echo "<label>Nombre: <input id = \"nombre\" type=\"text\" name=\"nombre\" value = \"$nombre\" disabled> </label><br>";
 
          //Select para encargado***************************************************************
-         $query = "SELECT empfullname,employid FROM employees WHERE permisos = 'Obra'";
+         $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
+                   INNER JOIN permisos b ON a.permisos = b.id;";
          $result = mysqli_query($con,$query);
          echo "Encargado: <select id = \"encargado\" name=\"encargado\" disabled>\n";
          while($row = mysqli_fetch_array($result)){
-            if($idEncargado == $row[1]){
-                echo "<option selected = \"selected\" value=".$row["employid"].">".$row["empfullname"]."</option>\n";
+            $id = $row[0];
+            $nombre_completo = $row[1] . " " . $row[2];
+            $permiso = $row[3];
+            if($idEncargado == $id){
+                echo "<option selected = \"selected\" value=$id>$nombre_completo | $permiso</option>\n";
             } else{
-                echo "<option value=".$row["employid"].">".$row["empfullname"]."</option>\n";
+                echo "<option value=$id>$nombre_completo | $permiso</option>\n";
             }
          }
          echo "</select><br>\n";
 
          //Select para reculador***************************************************************
-         $query = "SELECT empid,nombre FROM empleador ORDER BY nombre";
+         $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
+                   INNER JOIN permisos b ON a.permisos = b.id;";
          $result = mysqli_query($con,$query);
          echo "Reclutador: <select id = \"reclutador\" name=\"reclutador\" disabled>\n";
          while($row = mysqli_fetch_array($result)){
-             if($idReclutador == $row[0]){
-                echo "<option selected = \"selected\" value=".$row["empid"].">".$row["nombre"]."</option>\n";
-             } else{
-                echo "<option value=".$row["empid"].">".$row["nombre"]."</option>\n";
-             }
-                 
+            $id = $row[0];
+            $nombre_completo = $row[1] . " " . $row[2];
+            $permiso = $row[3];
+            if($idEncargado == $id){
+                echo "<option selected = \"selected\" value=$id>$nombre_completo | $permiso</option>\n";
+            } else{
+                echo "<option value=$id>$nombre_completo | $permiso</option>\n";
+            } 
          }
          echo "</select><br>\n";
 
@@ -98,12 +106,11 @@
 
     <h1>Estado de requisison</h1>
     <?php
-        include '../../config.php';
         //Muestra los pasos aprovados y los proximos a aprovar
-        $query = "SELECT a.id as estadoID,a.fecha,a.autorizacion,b.id_permisos,b.nombre as nombrePaso,c.employid,c.displayname
+        $query = "SELECT a.id as estadoID,a.fecha,a.autorizacion,b.id_permisos,b.nombre as nombrePaso,c.nombre,c.apellidos
                   FROM estado_req a 
                   INNER JOIN pasos_requisicion b ON a.idPaso = b.id
-                  LEFT JOIN employees c ON a.idUsuario = c.employid
+                  LEFT JOIN usuario c ON a.idUsuario = c.id_usuario
                   WHERE a.idRequisision = $id;";
         $result = mysqli_query($con,$query);
         echo "<table border = 1>\n";
@@ -119,7 +126,7 @@
             $nombre = $row['nombrePaso'];
             $auto = $row['autorizacion'];
             $fecha = $row['fecha'];
-            $usuario = $row['displayname'];
+            $usuario = $row["nombre"] . " " . $row["apellidos"];
             $idEstado = $row['estadoID'];
             $idPermisos = $row['id_permisos'];
             $accion = "";
@@ -162,7 +169,6 @@
 </html>
 
 <?php
-    include '../../config.php';
 	if(isset($_POST['guardar'])){
         echo "Hola";
         $id = $GLOBALS['id'];
@@ -194,7 +200,9 @@
 		//echo $sql . "<br>";
 
 		
-		$conn=mysqli_connect($host,$user,$pass,$name);
+		//Insertar la requisison en la base de datos
+		include '../../config.php';
+		$conn = new mysqli($host,$user,$pass,$name);
 		if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
 		} 

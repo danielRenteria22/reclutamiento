@@ -11,9 +11,9 @@
     <form enctype="multipart/form-data" id = "formaAgregar" method="POST" >
     <label>Nombre <input type="text" name="nombre"></label><br>
     <?php
-    			include '../../config.php';
                 //INICIO conexion con la base de datos
-			    $con=mysqli_connect($host,$user,$pass,$name);
+			    include '../../config.php';
+    			$con=mysqli_connect($host,$user,$pass,$name);
 			    if (mysqli_connect_errno())
 			    {
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -31,22 +31,30 @@
 				echo "</select><br>\n";
 				
 				//Select para encargado***************************************************************
-                $query = "SELECT empfullname,employid FROM employees WHERE permisos = 'Obra'";
+                $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
+						  INNER JOIN permisos b ON a.permisos = b.id;";
 			    $result = mysqli_query($con,$query);
 			    echo "Encargado: <select id = \"encargado\" name=\"encargado\">\n";
 				while($row = mysqli_fetch_array($result)){
-					    echo "<option value=".$row["employid"].">".$row["empfullname"]."</option>\n";
+					$id = $row[0];
+					$nombre_completo = $row[1] . " " . $row[2];
+					$permiso = $row[3];
+					echo "<option value=$id>$nombre_completo | $permiso</option>\n";
 				}
                 echo "</select><br>\n";
                 
-                //Select para reculador***************************************************************
-                $query = "SELECT empid,nombre FROM empleador ORDER BY nombre";
-			    $result = mysqli_query($con,$query);
-			    echo "Reclutador: <select id = \"reclutador\" name=\"reclutador\">\n";
-				while($row = mysqli_fetch_array($result)){
-					    echo "<option value=".$row["empid"].">".$row["nombre"]."</option>\n";
-				}
-                echo "</select><br>\n";
+				//Select para reculador***************************************************************
+				$query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
+				INNER JOIN permisos b ON a.permisos = b.id;";
+	  			$result = mysqli_query($con,$query);
+	  			echo "Encargado: <select id = \"encargado\" name=\"reclutador\">\n";
+	  			while($row = mysqli_fetch_array($result)){
+		  			$id = $row[0];
+		  			$nombre_completo = $row[1] . " " . $row[2];
+		  			$permiso = $row[3];
+		  			echo "<option value=$id>$nombre_completo | $permiso</option>\n";
+	  			}
+	  			echo "</select><br>\n";
 
                 //Select para perfil*****************************************************************
                 $query = "SELECT id_perfil,nombre FROM perfil ORDER BY nombre";
@@ -93,7 +101,6 @@
 </html>
 
 <?php
-	include '../../config.php';
 	if(isset($_POST['crear'])){
 		$nombre = $_POST["nombre"];
 		$empleadorID = $_POST["empleador"];
@@ -126,7 +133,8 @@
 
 		
 		//Insertar la requisison en la base de datos
-		$conn=mysqli_connect($host,$user,$pass,$name);
+		include '../../config.php';
+		$conn = new mysqli($host,$user,$pass,$name);
 		if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
 		} 
