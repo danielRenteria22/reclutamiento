@@ -4,7 +4,7 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    include '../../config.php';
+    include '../config.php';
     $conn=mysqli_connect($host,$user,$pass,$name);
     if(mysqli_connect_errno($conn))
     {
