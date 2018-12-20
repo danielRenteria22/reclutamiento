@@ -12,7 +12,7 @@
     <h1>Requisicion</h1>
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
-         $id = $_GET['id'];
+         $id_req = $_GET['id'];
          $GLOBALS['id'] = $id;
          include '../../config.php';
          $con=mysqli_connect($host,$user,$pass,$name);
@@ -23,7 +23,7 @@
          }
         
          //Buscar la informacion de una requisicion
-         $query = "SELECT * FROM requisicion WHERE id = $id";
+         $query = "SELECT * FROM requisicion WHERE id = $id_req";
          $result = mysqli_query($con,$query);
          $row = mysqli_fetch_array($result);
          $idEncargado = $row[1];
@@ -111,8 +111,9 @@
                   FROM estado_req a 
                   INNER JOIN pasos_requisicion b ON a.idPaso = b.id
                   LEFT JOIN usuario c ON a.idUsuario = c.id_usuario
-                  WHERE a.idRequisision = $id;";
+                  WHERE a.idRequisision = $id_req;";
         $result = mysqli_query($con,$query);
+        echo $id;
         echo "<table border = 1>\n";
         echo "  <tr>\n";
         echo "      <th>Nombre del paso </th>\n";
