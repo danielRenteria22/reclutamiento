@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Menu</title>
-  
-  
-  
-      <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      /* Important styles */
+/* Important styles */
 #toggle {
   display: block;
   width: 28px;
@@ -107,41 +96,3 @@ li a:focus {
 /* demo styles */
 body { margin-top: 3em; background: #eee; color: #555; font-family: "Open Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
 p, p a { font-size: 12px;text-align: center; color: #888; }
-    </style>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
-
-<body>
-
-  <a href="#menu" id="toggle"><span></span></a>
-
-<div id="menu">
-  <ul>
-    <li><a href="../agregar_permisos.php">Agregar permisos</a></li>
-    <li><a href="../conf_empresa.php">Configurar empresa</a></li>
-    <li><a href="../contratacion/ver_pasos.php">Proceso de contratacion</a></li>
-    <li><a href="../requisisciones/ver_pasos_req.php">Proceso de requisicion</a></li>
-    <li><a href="../../menu/index.html">Atras</a></li>
-  </ul>
-</div>
-
-
-
-
-
-
-
-<p>Inspirated by <a href="https://codepen.io/loredonut/pen/hjuai">Loredonut Pen</a></p>
-  
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
-</html>

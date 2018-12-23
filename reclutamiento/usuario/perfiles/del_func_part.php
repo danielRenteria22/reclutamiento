@@ -8,7 +8,7 @@
             exit;
     }
     
-    $query = "DELETE FROM funciones_esp WHERE id = $id";
+    $query = "DELETE FROM funciones_especiales WHERE id = $id";
     mysqli_query($con,$query);
 
     $url = "inf_prof.php?id=$idp";

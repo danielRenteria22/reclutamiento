@@ -8,9 +8,11 @@
             exit;
     }
     
-    $query = "DELETE FROM killer_q WHERE id = $id";
+    $query = "DELETE FROM killer_question WHERE id = $id";
     mysqli_query($con,$query);
+    $query2 = "DELETE FROM respuestas WHERE id_killer_question = $id";
+    mysqli_query($con,$query2);
 
-    $url = "inf_prof.php?id_perfil=$idp";
+    $url = "inf_prof.php?id=$idp";
     header( "Location: $url" );
 ?>

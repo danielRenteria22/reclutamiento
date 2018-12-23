@@ -24,11 +24,8 @@
         $id = $_SESSION["id_usuario"];
         $nivel = $_SESSION["nivel"];
 
-        echo "<script>
-                alert('id = $id, nivel = $nivel');
-                window.history.back();
-             </script>";
-        //header("Location: menu/index.html");
+       
+        header("Location: menu/index.html");
     } else{
         echo "<script>
                 alert('Usuario o contraseña equivocados');

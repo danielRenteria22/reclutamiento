@@ -10,6 +10,7 @@
     <h1>Ponderación</h1>
     <form action="" method="post">
     <?php
+        include '../../config.php';
         //Las ponderaciones estan en funcion de id_solicitud
         $id_solicitud = $_GET["id_solicitud"];
         //Obtenemos las consideraciones de la ponderacion correspondiente a esta solicitud
@@ -21,7 +22,8 @@
                   WHERE a.id = $id_solicitud;";
 
         //Conexion con la base de datos
-        $conn = mysqli_connect("localhost","root","","reclutamiento");
+        $conn=mysqli_connect($host,$user,$pass,$name);
+
         if(mysqli_connect_errno($conn))
         {
             echo 'No se pudo hacer la conexión con la base de datos';
@@ -36,7 +38,7 @@
             $consideracion = $row[1];
             $cont++;
             echo "<p>Consideracion#$cont: $consideracion
-                    <select name=name='c$id' >
+                    <select name='c$id' >
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -85,7 +87,7 @@
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        header("Location: ver_respuestas_ponderacion?id_solicitud=$id_solicitud");
+        header("Location: ver_respuestas_ponderacion.php?id_solicitud=$id_solicitud");
     }
 
 ?>

@@ -1,60 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Funciones General</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crear Funcion General</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>Crear Funciones General</h1>
-    <form enctype="multipart/form-data" id = "formCrear" method="POST" >
-        <button type="button" onclick="sendData()">Crear</button><br>
-        <button onclick="agregarConsideracion(); return false">Agregar Funcion</button><br>
-        <label >Funcion#1: <input type="text" name = "c1" id = "c1"><br>
-        </label>
+    <center><h1>Crear Funcion General</h1></center>
+    <form enctype="multipart/form-data" id = "formaAgregar" method="POST" >
+    <label>Funcion:         <input type="text" name="nombre"></label><br>
+    <?php
+                include '../../config.php';
+                $con=mysqli_connect($host,$user,$pass,$name);
+                if (mysqli_connect_errno())
+                {
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                    //exit;
+                }
+                mysqli_close($con); 
+            ?>
+            <input type = "submit" name = "crear" value = "Crear">
     </form>
 </body>
 </html>
 
-<script>
-    var numDePasos = 1;
+<?php
+    include '../../config.php';
+    $idp = $_GET["idp"];
+    if(isset($_POST['crear'])){
+        $conn=mysqli_connect($host,$user,$pass,$name);
 
-    function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        $nombre      = $_POST["nombre"];
+
+$link = mysqli_connect($host, $user, $pass);
+mysqli_select_db($link, "reclutamiento");
+mysqli_query($link, "INSERT INTO funciones_gles 
+                        VALUES  (
+                                    '',
+                                    '".$idp."',
+                                    '".$nombre."'
+                                );");
+        $conn->close();
     }
-    function agregarConsideracion() {
-        numDePasos++;
-        var lbl1 = document.createElement("LABEL");
-        var caption = document.createTextNode("Funcion#" + numDePasos+": ");
-        lbl1.appendChild(caption);
-
-        var inpt = document.createElement("INPUT");
-        inpt.setAttribute("name", "c" + numDePasos)
-        console.log("c" + numDePasos);
-        
-
-        var enter = document.createElement("BR");
-
-        var forma = document.getElementById("formCrear");
-
-        forma.appendChild(lbl1);
-        forma.appendChild(inpt);
-        forma.appendChild(enter);
-    }
-
-    function sendData(data) {
-        var idp2 = getParameterByName('prodId');
-        console.log("Enviando formulario")
-        var formElement = document.getElementById("formCrear");
-        formData = new FormData(formElement);
-        formData.append("num", numDePasos);
-        var request = new XMLHttpRequest();
-        request.open("POST", "new_func_gen_db.php");
-        request.send(formData);
-    }
-
-</script>
+?>

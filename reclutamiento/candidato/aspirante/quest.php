@@ -3,24 +3,37 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Killer Question</title>
+    <title>Cuestionario de Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <left><h1>Crear Killer Question</h1></left>
+    <left><h1>Cuestionario Inicial</h1></left>
     <form enctype="multipart/form-data" id = "formaAgregar" method="POST" >
     <?php
+        include '../../config.php';
         $id = $_GET['idp'];
-        echo "  <tr><td nowrap>Pregunta:</td><td>
-            <input name='pregunta'>&nbsp;</td></tr><br>\n";
-        echo "  <tr><td nowrap>Respuesta:</td>\n";
-        echo "  <input type='radio' name='rep' value='Si'checked>&nbsp;Si
-                <input type='radio' name='rep' value='No'>&nbsp;No</td></tr><br>\n";
-        echo "  <tr><td nowrap>Descalificar:</td>\n";
-        echo "  <input type='radio' name='des' value='Si'checked>&nbsp;Si
-                <input type='radio' name='des' value='No'>&nbsp;No</td></tr><br>\n";
+        $query = "SELECT
+                pregunta
+                    FROM 
+                killer_question,
+                respuestas 
+            WHERE 
+                $id = id_perfil 
+            AND
+                respuestas.id_killer_question=killer_question.id";
+            $con=mysqli_connect($host,$user,$pass,$name);
+            $result = mysqli_query($con,$query);
+            $c=0;
+            while($row = mysqli_fetch_array($result)){
+                echo "  <tr>\n";
+                echo "      <br><b><th>Pregunta:</b> ".$row[0]."</th><br/>\n";
+                echo "  <input type='radio' name='rep[$c]' value='Si'checked>&nbsp;Si
+                        <input type='radio' name='rep[$c]' value='No'>&nbsp;No</td></tr><br>\n";
+                $c++;
+            }
     ?>
-    <input type = "submit" name = "crear" value = "Agregar Pregunta">
+    <br>
+    <input type = "submit" name = "crear" value = "Enviar Solicitud">
             
     </form>
     
@@ -38,15 +51,6 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
-/*
-mysqli_select_db($conn, "reclutamiento");
-mysqli_query($conn, "INSERT INTO killer_question 
-                        VALUES  (
-                                    '',
-                                    '".$id."',
-                                    '".$pr."'
-                                );");
-*/
         $sql = "INSERT INTO killer_question 
                                 VALUES  (
                                     '',

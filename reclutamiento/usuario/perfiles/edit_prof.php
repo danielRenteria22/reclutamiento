@@ -136,7 +136,7 @@
                 SET
                     id_perfil = $id, 
                     id_cliente             = $cliente,
-                    id_obra                = $obra 
+                    id_obra                = $obra,
                     id_ponderacion         = $ponderaciones,
                     id_ciudad              = $ciudad,
                     id_empleador           = $empleador,

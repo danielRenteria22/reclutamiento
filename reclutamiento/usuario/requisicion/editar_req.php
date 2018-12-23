@@ -32,9 +32,7 @@
          $nombre = $row[4];
          $mi = $row[5];
          $me = $row[6];
-
          echo "<label>Nombre: <input id = \"nombre\" type=\"text\" name=\"nombre\" value = \"$nombre\" disabled> </label><br>";
-
          //Select para encargado***************************************************************
          $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
                    INNER JOIN permisos b ON a.permisos = b.id;";
@@ -51,7 +49,6 @@
             }
          }
          echo "</select><br>\n";
-
          //Select para reculador***************************************************************
          $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
                    INNER JOIN permisos b ON a.permisos = b.id;";
@@ -68,7 +65,6 @@
             } 
          }
          echo "</select><br>\n";
-
          //Select para perfil*****************************************************************
          $query = "SELECT id_perfil,nombre FROM perfil ORDER BY nombre";
          $result = mysqli_query($con,$query);
@@ -82,22 +78,19 @@
                  
          }
          echo "</select><br>\n";
-
          /**Falta empleador,obra y ciudad */
-
          //Mercado interno
          if($mi == 1){
             echo "<input  id = \"mInterno\" checked=\"checked\" type=\"checkbox\" name=\"mInterno\" value=\"i\" disabled> Mercado interno<br>";
          } else{
             echo "<input  id = \"mInterno\" type=\"checkbox\" name=\"mInterno\" value=\"i\"> Mercado interno<br disabled>";
          }
-
          //Mercado externo
          if($mi == 1){
             echo "<input  id = \"mExterno\" checked=\"checked\" type=\"checkbox\" name=\"mExterno\" value=\"e\" disabled> Mercado externo<br>";
          } else{
             echo "<input id = \"mExterno\" type=\"checkbox\" name=\"mExterno\" value=\"e\" disabled > Mercado externo<br >";
-         }			
+         }          
          //mysqli_close($con); 
     ?>
     <input id = "guardar" type = "submit" name = "guardar" value = "Guardar cambios" disabled >
@@ -131,11 +124,9 @@
             $idEstado = $row['estadoID'];
             $idPermisos = $row['id_permisos'];
             $accion = "";
-
             if(!$fecha){
                 $fecha = "-";
             }
-
             if($auto == 1){
                 $auto = "Autorizada";
                 $accion = "-";
@@ -148,11 +139,9 @@
                     $accion = "Esperando";
                 }
             }
-
             if(!$usuario){
                 $usuario = "-";
             }
-
             
             
             
@@ -170,53 +159,45 @@
 </html>
 
 <?php
-	if(isset($_POST['guardar'])){
+    if(isset($_POST['guardar'])){
         echo "Hola";
         $id = $GLOBALS['id'];
-		$nombre = $_POST["nombre"];
-		//$empleadorID = $_POST["empleador"];
-		$encargadoID = $_POST["encargado"];
-		$reclutadorID = $_POST["reclutador"];
-		$perfilID = $_POST["perfil"];
-		//$obraID = $_POST["obra"];
-		//$ciudadID = $_POST["ciudad"];
-
-		$mInterno = 0;
-		$mExterno = 0;
-
-		if(isset($_POST['mInterno'])){
-			$mInterno = 1;
-		}
-
-		if(isset($_POST['mExterno'])){
-			$mExterno = 1;
-		}
-
-
-		
-
+        $nombre = $_POST["nombre"];
+        //$empleadorID = $_POST["empleador"];
+        $encargadoID = $_POST["encargado"];
+        $reclutadorID = $_POST["reclutador"];
+        $perfilID = $_POST["perfil"];
+        //$obraID = $_POST["obra"];
+        //$ciudadID = $_POST["ciudad"];
+        $mInterno = 0;
+        $mExterno = 0;
+        if(isset($_POST['mInterno'])){
+            $mInterno = 1;
+        }
+        if(isset($_POST['mExterno'])){
+            $mExterno = 1;
+        }
+        
         $sql = "UPDATE requisicion 
                 SET id_encargado = $idEncargado,id_perfil = $idPerfil,nombre = '$nombre',mercado_interno = $mInterno, mercado_externo = $mExterno 
                 WHERE id = $id";
-		//echo $sql . "<br>";
-
-		
-		//Insertar la requisison en la base de datos
-		include '../../config.php';
-		$conn = new mysqli($host,$user,$pass,$name);
-		if ($conn->connect_error) {
-    		die("Connection failed: " . $conn->connect_error);
-		} 
-		//Se obtiene el ID  de la ultima requision para agregar los pasos nulos en estado_req
-		if ($conn->query($sql) === TRUE) {
-    		echo "Se efectuaron los cambios con exito";
-		} else {
-    		echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-		
-
-		$conn->close();
-	}
+        //echo $sql . "<br>";
+        
+        //Insertar la requisison en la base de datos
+        include '../../config.php';
+        $conn = new mysqli($host,$user,$pass,$name);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+        //Se obtiene el ID  de la ultima requision para agregar los pasos nulos en estado_req
+        if ($conn->query($sql) === TRUE) {
+            echo "Se efectuaron los cambios con exito";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        
+        $conn->close();
+    }
 ?>
 <script>
     function abilitarEdicion(){
