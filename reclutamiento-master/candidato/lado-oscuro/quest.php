@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cuestionario de Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
     <left><h1>Cuestionario Inicial</h1></left>
