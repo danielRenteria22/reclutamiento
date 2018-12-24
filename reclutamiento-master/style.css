@@ -36,10 +36,10 @@ table {
 }
 
 th, td , tr {
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-align: left;
     padding: 8px;
-	color : #000 ;
+  color : #000 ;
 }
 
 
@@ -53,7 +53,7 @@ h1 , h2 , p {
     color: #263A4A;
 }
 input {
-	text-aling: left;
+  text-aling: left;
 }
 
 
