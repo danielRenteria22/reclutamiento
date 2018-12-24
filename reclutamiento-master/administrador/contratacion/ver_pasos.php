@@ -1,4 +1,8 @@
 <html>
+    
+    <head>
+       <link rel="stylesheet" type="text/css" href="../../style.css">
+    </head>
     <body>
         <center><h1> Pasos para requisisiones</h1></center>
         <?php
