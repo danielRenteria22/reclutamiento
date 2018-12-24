@@ -1,4 +1,7 @@
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../style.css">
+    </head>
     <body>
         <center><h1>Cuestionario para cancelacion de solicitud</h1></center>
         <?php
