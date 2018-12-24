@@ -1,4 +1,7 @@
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../style.css">
+    </head>
     <body>
         <center><h1> Agregar preguntas al formulario de referencias</h1></center>
         <form enctype="multipart/form-data" id = "formaAgregar" method="POST" >
