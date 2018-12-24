@@ -29,6 +29,9 @@
 ?>
 
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+	</head>
     <body>
         <center> Agregar permisos </center>
         <form enctype="multipart/form-data" action="" method="POST">
