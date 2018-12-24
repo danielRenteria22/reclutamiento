@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Editar Paso</title>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
