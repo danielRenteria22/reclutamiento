@@ -1,3 +1,9 @@
+<?php 
+    include "../../verificacion.php";
+    verificar();
+?>
+
+
 <?php
     include '../../config.php';
     $numNuevos = $_POST["nuevos"];
