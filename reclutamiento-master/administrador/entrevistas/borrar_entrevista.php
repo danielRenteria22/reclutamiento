@@ -1,3 +1,8 @@
+<?php 
+    include "../../verificacion.php";
+    verificar();
+?>
+
 <?php
     include '../../config.php';
     $id_entrevista = $_GET["id"];
