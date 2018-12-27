@@ -1,4 +1,9 @@
-<<!DOCTYPE html>
+<?php 
+    include "../../verificacion.php";
+    verificar();
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
