@@ -1,3 +1,8 @@
+<?php 
+    include "../../verificacion.php";
+    verificar();
+?>
+
 <?php
     session_start();
     include '../../config.php';
