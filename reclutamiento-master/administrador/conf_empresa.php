@@ -1,5 +1,5 @@
 <?php 
-    include "../../verificacion.php";
+    include "../verificacion.php";
     verificar();
 ?>
 
