@@ -1,3 +1,7 @@
+<?php 
+    include "../../verificacion.php";
+    verificar();
+?>
 <html>
 </<!DOCTYPE html>
 <html>
