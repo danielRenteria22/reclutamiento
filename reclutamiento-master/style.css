@@ -69,7 +69,7 @@ input:focus + .input-icon:after {
   border-right-color: #7ed321;
 }
 input[type="radio"] {
-  display: none;
+  
 }
 input[type="radio"] + label,
 select {
