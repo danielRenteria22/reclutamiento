@@ -99,7 +99,6 @@ select:active {
   border-color: #64ac15;
 }
 input[type="checkbox"] {
-  display: none;
 }
 input[type="checkbox"] + label {
   position: relative;
