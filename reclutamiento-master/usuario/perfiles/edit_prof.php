@@ -147,12 +147,12 @@
                     id_ciudad              = $ciudad,
                     id_empleador           = $empleador,
                     id_contrato            = $contrato,
-                    fecha_inicio           = $fecha,
+                    fecha_inicio           = '$fecha',
                     tipo_de_contrato       = '0',
                     sueldo                 = $sueldo,
                     tope_de_bonos          = $bonos,
-                    descripcion_del_puesto = $descripcion,
-                    nombre                 = $nombre,
+                    descripcion_del_puesto = '$descripcion',
+                    nombre                 = '$nombre',
                     vacante                = $vacante,
                     id_bonos               = '0'      
                     
@@ -165,7 +165,8 @@
 		} 
 		//Se obtiene el ID  de la ultima requision para agregar los pasos nulos en estado_req
 		if ($conn->query($sql) === TRUE) {
-    		echo "Se efectuaron los cambios con exito";
+            echo "Se efectuaron los cambios con exito";
+            header("Location: inf_prof.php?id=$id");
 		} else {
     		echo "Error: " . $sql . "<br>" . $conn->error;
 		}
