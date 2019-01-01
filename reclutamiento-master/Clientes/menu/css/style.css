@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Menu</title>
-  
-  
-  
-      <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      /* Important styles */
+/* Important styles */
 #toggle {
   display: block;
   width: 28px;
@@ -107,40 +96,3 @@ li a:focus {
 /* demo styles */
 body { margin-top: 3em; background: #eee; color: #555; font-family: "Open Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
 p, p a { font-size: 12px;text-align: center; color: #888; }
-    </style>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
-
-<body>
-
-  <a href="#menu" id="toggle"><span></span></a>
-
-<div id="menu">
-  <ul>
-    <li><a href="../administrador/menu/index.html">Administrador</a></li>
-    <li><a href="../Clientes/menu/index.html">Clientes</a></li>
-    <li><a href="../usuario/menu/index.html">Usuario</a></li>
-    <li><a href="../candidato/menu/index.html">Candidato</a></li>
-    <li><a href="../menu/index.html">Salir</a></li>
-  </ul>
-</div>
-
-
-
-
-
-
-
-  
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
-</html>
