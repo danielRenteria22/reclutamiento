@@ -1,6 +1,6 @@
 <?php 
     include "../../verificacion.php";
-    verificar();
+    verificar_admin();
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +33,13 @@
         $id = $row["id"];
         $nombre = $row["nombre"];
 
-        echo "<tr>
+        if($id != 3){
+            echo "<tr>
                 <td>$nombre</td>
                 <td><a href = 'eliminar_permiso.php?id=$id'>Eliminar</a></td>
             </tr>";
+        }
+        
         
     }
     echo "</table>";
