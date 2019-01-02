@@ -153,7 +153,7 @@
                     tope_de_bonos          = $bonos,
                     descripcion_del_puesto = '$descripcion',
                     nombre                 = '$nombre',
-                    vacante                = $vacante,
+                    vacante                = '$vacante',
                     id_bonos               = '0'      
                     
                         WHERE $id = id_perfil";
