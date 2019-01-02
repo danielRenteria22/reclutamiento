@@ -1,6 +1,6 @@
 <?php 
     include "../../verificacion.php";
-    verificar();
+    verificar_admin();
 ?>
 
 <!DOCTYPE html>
