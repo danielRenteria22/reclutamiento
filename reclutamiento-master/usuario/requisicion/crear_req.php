@@ -173,5 +173,6 @@
 		}
 		
 		$conn->close();
+		header("Location: ver_req.php");
 	}
 ?>
