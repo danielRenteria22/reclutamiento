@@ -13,4 +13,5 @@
     
      $query = "DELETE FROM empleador WHERE empid = $id";
     mysqli_query($con,$query);
+    header("index.php");
 ?>

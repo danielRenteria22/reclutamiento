@@ -13,4 +13,5 @@
     
      $query = "DELETE FROM works WHERE IDWork = $id";
     mysqli_query($con,$query);
+    header("index.php");
 ?>

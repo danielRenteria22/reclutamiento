@@ -13,4 +13,5 @@
     
      $query = "DELETE FROM contratos WHERE contratoid = $id";
     mysqli_query($con,$query);
+    header("index.php");
 ?>

@@ -13,4 +13,5 @@
     
      $query = "DELETE FROM groups WHERE groupid = $id";
     mysqli_query($con,$query);
+    header("index.php");
 ?>
