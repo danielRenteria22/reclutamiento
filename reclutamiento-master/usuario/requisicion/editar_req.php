@@ -19,7 +19,7 @@
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
          $id_req = $_GET['id'];
-         $GLOBALS['id'] = $id;
+         $GLOBALS['id'] = $id_req;
          include '../../config.php';
          $con=mysqli_connect($host,$user,$pass,$name);
          // Check connection 
@@ -185,7 +185,7 @@
         
         $sql = "UPDATE requisicion 
                 SET id_encargado = $idEncargado,id_perfil = $idPerfil,nombre = '$nombre',mercado_interno = $mInterno, mercado_externo = $mExterno 
-                WHERE id = $id";
+                WHERE id = $id_req";
         //echo $sql . "<br>";
         
         //Insertar la requisison en la base de datos
@@ -196,12 +196,15 @@
         } 
         //Se obtiene el ID  de la ultima requision para agregar los pasos nulos en estado_req
         if ($conn->query($sql) === TRUE) {
+            echo $sql;
             echo "Se efectuaron los cambios con exito";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
         
         $conn->close();
+
+        header("Location: editar_req.php?id=$id_req");
     }
 ?>
 <script>
