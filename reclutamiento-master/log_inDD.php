@@ -19,6 +19,7 @@
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
         $id = $row[0];
+        $_SESSION["id_usuario"] = $row[0];
     }
 
     if($id!=0){
