@@ -927,7 +927,7 @@ CREATE TABLE `requisicion` (
   `mercado_interno` tinyint(1) NOT NULL,
   `mercado_externo` tinyint(1) NOT NULL,
   `autorizacion` tinyint(1) NOT NULL DEFAULT '0',
-  `fecha` date NOT NULL,
+  `fecha_creacion` date NOT NULL,
   `fecha_limite` date DEFAULT NULL,
   `candidatos_minimos` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
