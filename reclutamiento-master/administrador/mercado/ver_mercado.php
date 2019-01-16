@@ -1,4 +1,10 @@
 <?php 
+//
+// 3 = contratado
+// 0 = candidato normal
+// 1 = despedido
+//
+
     include "../../verificacion.php";
     verificar_admin();
 ?>
@@ -32,11 +38,13 @@
         <th>Correo</th>
         <th>Telefono</th>
         <th>NSS</th>
+        <th>Despedir</th>
     </tr>";
     $query = "SELECT * FROM employees where tipo = '3'";
     $c=1;
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
+        $id = $row["employid"];
         $email = $row["email"];
         $nombre = $row["empfullname"];
         $apellidos = $row["apellidos"];
@@ -53,6 +61,7 @@
                 <td>$email</td>
                 <td>$phone</td>
                 <td>$nss</td>
+                <td><a href = 'despedir.php?id=$id'>Eliminar</a></td>
             </tr>";
         $c++;
     }
