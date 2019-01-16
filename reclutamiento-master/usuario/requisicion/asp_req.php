@@ -52,7 +52,7 @@
                     echo "      <th>".$row2[3]."</th>\n";
                     echo "      <th>".$row2[2]."</th>\n";
                     echo "      <th><a href = \"inf_asp.php?id=".$row2[4]."&id_solicitud=$solicitud\">Ver</a></th>\n";
-                    echo "      <th><a href = \"del_asp.php?id=".$row2[4]."\">Descalificar</a></th>\n";
+                    echo "      <th><a href = \"del_asp.php?id=$solicitud\">Descalificar</a></th>\n";
                     echo "  </tr>";
                     $c++;
                 }

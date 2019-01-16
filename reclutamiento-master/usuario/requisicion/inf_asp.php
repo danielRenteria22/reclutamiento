@@ -17,11 +17,25 @@
     <h1>Vacante</h1>
     <?php
         include '../../config.php';
+        $con=mysqli_connect($host,$user,$pass,$name);
         //Employee id
         $id = $_GET["id"];
         //Solicitud id
-        $solicitud = $_GET["id_solicitud"];
-        $con=mysqli_connect($host,$user,$pass,$name);
+        $sol = $_GET["id_solicitud"];
+        $sols = $_GET["id_solicitud"];
+        $query = "SELECT
+                id
+                    FROM 
+                    solicitudes
+                        WHERE 
+                        $id = id_usuario
+                        AND
+                        $sol = id_requisicion";
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_array($result)){
+                $solicitud = $row[0];
+            }
+        
             if (mysqli_connect_errno())
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -55,7 +69,60 @@
                 echo "      <br><b><th>Email:</b> ".$row[7]."</th><br/>\n";
                 echo "</tr>\n";
             }
-//funciones generales
+//respuestas de KQ
+        echo"<h3>Respuestas KQ</h3>";
+            $con=mysqli_connect($host,$user,$pass,$name);
+            if (mysqli_connect_errno())
+            {
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $query = "SELECT id,id_killer_question,id_respuesta,respuesta FROM resp_killer_questions WHERE $solicitud = id_solicitud";
+            $result = mysqli_query($con,$query);
+            echo "<table border = 1>\n";
+            echo "  <tr>\n";
+            echo "      <th>No. </th>\n";
+            echo "      <th>Pregunta </th>\n";
+            echo "      <th>Respuesta de Aspirante </th>\n";
+            echo "      <th>Respuesta Esperada </th>\n";
+            echo "</tr>\n";
+            $c=1;
+            
+            while($row = mysqli_fetch_array($result)){
+                $pregunta = $row[1];
+                $resp     = $row[2];
+                $asp      = $row[3];
+
+                $querys = "SELECT pregunta FROM killer_question WHERE $pregunta = id";
+                $results = mysqli_query($con,$querys);
+                while($row = mysqli_fetch_array($results)){
+                    $quest    = $row[0];
+                }
+                $queryss = "SELECT respuesta,descalificar FROM respuestas WHERE $pregunta = id_killer_question";
+                $resultss = mysqli_query($con,$queryss);
+                while($row = mysqli_fetch_array($resultss)){
+                    $respuesta    = $row[0];
+                    $descalificar = $row[1];
+                }
+
+                echo "  <tr>\n";
+                echo "      <th>".$c."</th>\n";
+                echo "      <th>".$quest."</th>\n";
+                if($asp == $respuesta)
+                {
+                    echo "      <th><p style=color:lightgreen>".$asp."</p></th>\n";
+                    echo "      <th><p style=color:lightgreen>".$respuesta."</p></th>\n";
+                }
+                if($asp != $respuesta)
+                {
+                    echo "      <th><p style=color:red>".$asp."</p></th>\n";
+                    echo "      <th><p style=color:red>".$respuesta."</p></th>\n";
+                }
+                echo "  </tr>";
+                $c++;
+            }
+
+            echo "</table>";    
+//Solicitudes
         echo"<h3>Solicitudes</h3>";
             $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
@@ -167,7 +234,6 @@
                 $ponderacion    = $row[1];
                 $referencia    = $row[2];
             }
-
             echo "</table>\n";
             echo "<br><br>";
 

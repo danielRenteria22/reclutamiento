@@ -150,8 +150,16 @@
 		date_default_timezone_set("America/Chihuahua");
 		$fecha = date("Y/m/d");
 
-		$sql = "INSERT INTO requisicion(id_encargado,id_reclutador,id_perfil,nombre,mercado_interno	,mercado_externo,
-		fecha_creacion,fecha_limite	,candidatos_minimos) 
+		$sql = "INSERT INTO requisicion(
+						id_encargado,
+						id_reclutador,
+						id_perfil,
+						nombre,
+						mercado_interno,
+						mercado_externo,
+						fecha_creacion,
+						fecha_limite,
+						candidatos_minimos) 
 				 VALUES ($encargadoID,$reclutadorID,$perfilID,'$nombre',$mInterno,$mInterno,'$fecha','$fecha_limite',$candidatos_minimos);";
 		//echo $sql . "<br>";
 

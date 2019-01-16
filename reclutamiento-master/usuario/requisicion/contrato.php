@@ -50,8 +50,8 @@
                     echo "      <th>".$row2[1]."</th>\n";
                     echo "      <th>".$row2[3]."</th>\n";
                     echo "      <th>".$row2[2]."</th>\n";
-                    echo "      <th><a href = \"inf_asp.php?id=".$row2[4]."\">Ver</a></th>\n";
-                    echo "      <th><a href = \"update_asp.php?id=".$row2[4]."\">Contratar</a></th>\n";
+                    echo "      <th><a href = \"inf_asp.php?id=".$row2[4]."&id_solicitud=$idr\">Ver</a></th>\n";
+                    echo "      <th><a href = \"update_asp.php?id=".$row2[4]."&id_solicitud=$idr\">Contratar</a></th>\n";
                     echo "  </tr>";
                     $c++;
                 }

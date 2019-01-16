@@ -156,6 +156,35 @@
                 echo "</tr>\n";
             }
             echo "      <br><b><th><a href = \"edit_prof.php?id=$perf&idp=$id\">Editar</a></th></b><br/>\n";
+//bonos
+        echo"<h3>Bonos</h3>";
+            $con=mysqli_connect($host,$user,$pass,$name);
+            if (mysqli_connect_errno())
+            {
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $query = "SELECT id,nombre,valor FROM bonos WHERE $id = id_perfil";
+            $result = mysqli_query($con,$query);
+            echo "<table border = 1>\n";
+            echo "  <tr>\n";
+            echo "      <th>No. </th>\n";
+            echo "      <th>Nombre </th>\n";
+            echo "      <th>Cantidad </th>\n";
+            echo "      <th>Eliminar</th>\n";
+            echo "</tr>\n";
+            $perfg = $row[0];
+            $c=1;
+            while($row = mysqli_fetch_array($result)){
+                echo "  <tr>\n";
+                echo "      <th>".$c."</th>\n";
+                echo "      <th>".$row[1]."</th>\n";
+                echo "      <th>".$row[2]."</th>\n";
+                echo "      <th><a href = \"del_bono.php?id=$row[0];&idp=$id\">Eliminar</a></th>\n";
+                echo "  </tr>";
+                $c++;
+            }
+            echo "</table>\n";
+            echo "      <br><b><th><a href = \"new_bono.php?idp=$id\">Nuevo</a></th></b><br/>\n";
 //funciones generales
         echo"<h3>Funciones Generales</h3>";
             $con=mysqli_connect($host,$user,$pass,$name);

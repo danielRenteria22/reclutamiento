@@ -53,7 +53,6 @@
             echo "  <tr>\n";
             echo "      <th>Nombre </th>\n";
             echo "      <th>Proximo paso</th>\n";
-            echo "      <th>Aspirantes </th>\n";
             echo "      <th>Editar </th>\n";
             echo "      <th>Eliminar</th>\n";
             echo "</tr>\n";
@@ -74,7 +73,6 @@
                 echo "  <tr>\n";
                 echo "      <th><a>".$row[1]."</a> </th>\n";
                 echo "      <th> <a>$nombrePaso(Aprovar)</a> </th>";
-                echo "      <th><a href = \"asp_req.php?id=".$row[0]."\">Ver</a></th>\n";
                 echo "      <th><a href = \"editar_req.php?id=".$row[0]."\">Editar</a></th>\n";
                 echo "      <th><a href = \"borrar_req.php?id=".$row[0]."\">Eliminar</a></th>\n";
                 echo "  </tr>";

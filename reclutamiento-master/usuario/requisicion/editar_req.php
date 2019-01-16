@@ -38,8 +38,8 @@
          $nombre = $row[4];
          $mi = $row[5];
          $me = $row[6];
-         $fecha_limite = $row[10];
-         $candidatos_minimos = $row[11];
+         $fecha_limite = $row[9];
+         $candidatos_minimos = $row[10];
          echo "<label>Nombre: <input id = \"nombre\" type=\"text\" name=\"nombre\" value = \"$nombre\" disabled> </label><br>";
          //Select para encargado***************************************************************
          $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 

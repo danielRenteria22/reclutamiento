@@ -19,8 +19,7 @@
     <label>Vacante        <input type="text" name="vacante"></label><br>
     <label>Descripcion    <input type="text" name="descripcion"></label><br>
     <label>Fecha de Inicio<input type="text" name="inicio"></label><br>
-    <label>Sueldo Nominal <input type="text" name="sueldo"></label><br>
-    <label>Tope de Bonos  <input type="text" name="bonos"></label><br>
+    <label>Sueldo Nominal <input type="text" name="sueldo"></label><br>s
     <?php
     			include '../../config.php';
 			    $con=mysqli_connect($host,$user,$pass,$name);
@@ -104,7 +103,6 @@
 		$vacante     = $_POST["vacante"];
 		$descripcion = $_POST["descripcion"];
 		$sueldo      = $_POST["sueldo"];
-		$bonos       = $_POST["bonos"];
 		$contrato    = $_POST["contrato"];
 		$ponderacion = $_POST["ponderacion"];
 
@@ -122,7 +120,7 @@ mysqli_query($link, "INSERT INTO perfil
 				 					'".$inicio."',
 				 					'',
 				 					'".$sueldo."',
-				 					'".$bonos."',
+				 					'',
 				 					'".$descripcion."',
 				 					'".$nombre."',
 				 					'".$vacante."',
