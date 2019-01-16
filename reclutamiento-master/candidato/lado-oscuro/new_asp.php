@@ -67,6 +67,42 @@ mysqli_query($link, "INSERT INTO employees
                                     '0',
                                     '".$destino."'
                                 );");
+    $query = "SELECT employid FROM employees WHERE employid = (SELECT MAX(employid) from employees)";
+        $result = mysqli_query($conn,$query);
+        while($row = mysqli_fetch_array($result)){
+            $pasomax=$row[0];
+        }
+
+mysqli_query($link, "INSERT INTO referencias 
+                        VALUES  (
+                                    '',
+                                    '".$pasomax."',
+                                    '".$nombre1."',
+                                    '".$casa1."',
+                                    '".$tel1."',
+                                    '".$ocup1."',
+                                    '".$tiempo1."'
+                                );");
+mysqli_query($link, "INSERT INTO referencias 
+                        VALUES  (
+                                    '',
+                                    '".$pasomax."',
+                                    '".$nombre2."',
+                                    '".$casa2."',
+                                    '".$tel2."',
+                                    '".$ocup2."',
+                                    '".$tiempo2."'
+                                );");
+mysqli_query($link, "INSERT INTO referencias 
+                        VALUES  (
+                                    '',
+                                    '".$pasomax."',
+                                    '".$nombre3."',
+                                    '".$casa3."',
+                                    '".$tel3."',
+                                    '".$ocup3."',
+                                    '".$tiempo3."'
+                                );");
         $conn->close();
     }
 ?>

@@ -68,7 +68,8 @@
                                     '".$idr."',
                                     '".$fecha."',
                                     '',
-                                    '0'
+                                    '0',
+                                    ''
                                 );");
 //buscamos la solicitud con mayor id (la que se acaba de insertar)
         $query = "SELECT id FROM solicitudes WHERE id = (SELECT MAX(id) from solicitudes)";
@@ -83,7 +84,7 @@
                                     '',
                                     '',
                                     '',
-                                    '$pasomax'
+                                    '".$pasomax."'
                                 );");
 //isnertar las respuestas de las KQ
         $a=0;

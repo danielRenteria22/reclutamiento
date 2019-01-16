@@ -98,6 +98,7 @@
                 echo "      <br><b><th>Cliente:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            /*
             $query = "SELECT
                 nombre
                     FROM 
@@ -111,6 +112,7 @@
                 echo "      <br><b><th>Empleador:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            */
             $query = "SELECT
                 Workname
                     FROM 
@@ -124,6 +126,7 @@
                 echo "      <br><b><th>Obra:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            /*
             $query = "SELECT
                 tipo
                     FROM 
@@ -137,6 +140,7 @@
                 echo "      <br><b><th>Contrato:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            */
 //funciones generales
         echo"<h3>Funciones Generales</h3>";
             $con=mysqli_connect($host,$user,$pass,$name);

@@ -20,13 +20,13 @@
         $id2 = $_GET["idp"];
         $id3 = $_GET["idr"];
         $total = mysqli_num_rows(mysqli_query($con,"SELECT id FROM solicitudes WHERE $id2 = id_usuario and $id3 = id_requisicion"));
-
+/*
         if($total != 0)
         {
             echo"<br>";
             echo"Usted ya ha aplicado para esta vacante";
             exit();
-        } 
+        } */
     ?>
     <h1>Perfil</h1>
     <?php
@@ -62,8 +62,8 @@
                 echo "      <br><b><th>Nombre:</b> ".$row[0]."</th><br/>\n";
                 echo "      <br><b><th>Vacante:</b> ".$row[1]."</th><br/>\n";
                 echo "      <br><b><th>Descripcion:</b> ".$row[2]."</th><br/>\n";
-                echo "      <br><b><th>Sueldo:</b> ".$row[3]."</th><br/>\n";
                 echo "</tr>\n";
+                $sueldo     = $row[3];
                 $ciudad     = $row[5];
                 $cliente    = $row[6];
                 $empleador  = $row[7];
@@ -71,6 +71,20 @@
                 $ponderacion= $row[9];
                 $contrato   = $row[10];
                 $perf       = $row[11];
+            }
+            $query = "SELECT
+                        SUM(valor)
+                    FROM
+                        bonos
+                            WHERE
+                                $id = id_perfil";
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_array($result))
+            {
+                echo "  <tr>\n";
+                $sueldo = $sueldo + $row[0];
+                echo "      <br><b><th>Salario:</b> ".$sueldo."</th><br/>\n";
+                echo "</tr>\n";
             }
             $query = "SELECT
                 officename
@@ -98,6 +112,7 @@
                 echo "      <br><b><th>Cliente:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            /*
             $query = "SELECT
                 nombre
                     FROM 
@@ -111,6 +126,7 @@
                 echo "      <br><b><th>Empleador:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            */
             $query = "SELECT
                 Workname
                     FROM 
@@ -124,6 +140,7 @@
                 echo "      <br><b><th>Obra:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            /*
             $query = "SELECT
                 tipo
                     FROM 
@@ -137,6 +154,7 @@
                 echo "      <br><b><th>Contrato:</b> ".$row[0]."</th><br/>\n";
                 echo "</tr>\n";
             }
+            */
 //funciones generales
         echo"<h3>Funciones Generales</h3>";
             $con=mysqli_connect($host,$user,$pass,$name);

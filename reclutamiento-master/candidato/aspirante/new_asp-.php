@@ -23,7 +23,7 @@
             {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
-            $query = "SELECT id_perfil,nombre,id FROM requisicion WHERE mercado_externo = 1";
+            $query = "SELECT id_perfil,nombre,id FROM requisicion WHERE mercado_externo = 1 AND autorizacion = 1";
             $result = mysqli_query($con,$query);
             echo "<table border = 1>\n";
             echo "  <tr>\n";
