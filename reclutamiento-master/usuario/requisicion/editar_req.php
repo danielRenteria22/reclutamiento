@@ -38,6 +38,8 @@
          $nombre = $row[4];
          $mi = $row[5];
          $me = $row[6];
+         $fecha_limite = $row[10];
+         $candidatos_minimos = $row[11];
          echo "<label>Nombre: <input id = \"nombre\" type=\"text\" name=\"nombre\" value = \"$nombre\" disabled> </label><br>";
          //Select para encargado***************************************************************
          $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
@@ -84,6 +86,14 @@
                  
          }
          echo "</select><br>\n";
+
+         //Fecha limite
+         echo "<label >Fecha limite: <input type='date' name='fecha_limite' value = '$fecha_limite' required></label>";
+
+         //Candidatos minimos
+         echo "<label >Candidatos minimos: <input type='number' name='candidatos_minimos' value=$candidatos_minimos required></label>";
+
+
          /**Falta empleador,obra y ciudad */
          //Mercado interno
          if($mi == 1){
@@ -172,6 +182,8 @@
         $encargadoID = $_POST["encargado"];
         $reclutadorID = $_POST["reclutador"];
         $perfilID = $_POST["perfil"];
+        $candidatos_minimos = $_POST["candidatos_minimos"];
+		$fecha_limite = $_POST["fecha_limite"];
         //$obraID = $_POST["obra"];
         //$ciudadID = $_POST["ciudad"];
         $mInterno = 0;
@@ -184,7 +196,8 @@
         }
         
         $sql = "UPDATE requisicion 
-                SET id_encargado = $idEncargado,id_perfil = $idPerfil,nombre = '$nombre',mercado_interno = $mInterno, mercado_externo = $mExterno 
+                SET id_encargado = $idEncargado,id_perfil = $idPerfil,nombre = '$nombre',mercado_interno = $mInterno, 
+                mercado_externo = $mExterno, fecha_limite = '$fecha_limite', candidatos_minimos = $candidatos_minimos 
                 WHERE id = $id_req";
         //echo $sql . "<br>";
         

@@ -17,7 +17,9 @@
     <h1>Vacante</h1>
     <?php
         include '../../config.php';
+        //Employee id
         $id = $_GET["id"];
+        //Solicitud id
         $solicitud = $_GET["id_solicitud"];
         $con=mysqli_connect($host,$user,$pass,$name);
             if (mysqli_connect_errno())
@@ -95,6 +97,68 @@
                 echo "  </tr>";
                 $c++;
             }
+
+            echo "</table>";
+
+            //Proceso de relcutamiento
+            //Muestra los pasos aprovados y los proximos a aprovar
+        echo "<h3>Proceso de solicitud</h3>";
+        $query = "SELECT a.id_estado_solicitud as estadoID,a.fecha,a.autorizacion,b.nivel_auto,b.nombre as nombrePaso,c.nombre,c.apellidos
+        FROM estado_solicitud a 
+        INNER JOIN pasos_reclutamiento b ON a.id_paso = b.id
+        LEFT JOIN usuario c ON a.id_usuario = c.id_usuario
+        WHERE a.id_solicitud = $solicitud;";
+        $result = mysqli_query($con,$query);
+        echo mysqli_error($con);
+        echo "<table border = 1>\n";
+        echo "  <tr>\n";
+        echo "      <th>Nombre del paso </th>\n";
+        echo "      <th>Estatus</th>\n";
+        echo "      <th>Fecha</th>\n";
+        echo "      <th>Usarion que autorizo</th>\n";
+        echo "      <th>Accion</th>\n";
+        echo "</tr>\n";
+        $primerNoAuto = false;
+        while($row = mysqli_fetch_array($result)){
+            $nombre = $row['nombrePaso'];
+            $auto = $row['autorizacion'];
+            $fecha = $row['fecha'];
+            $usuario = $row["nombre"] . " " . $row["apellidos"];
+            $idEstado = $row['estadoID'];
+            $idPermisos = $row['nivel_auto'];
+            $accion = "";
+            if(!$fecha){
+                $fecha = "-";
+            }
+            if($auto == 1){
+                $auto = "Autorizada";
+                $accion = "-";
+            } else{
+                $auto = "No Autorizada";
+                if(!$primerNoAuto){
+                    $accion = "<a href = \"autorizarPaso_sol.php?idEstado=$idEstado&idPermiso=$idPermisos\">Autorizar</a>";
+                    $primerNoAuto = TRUE;
+                } else{
+                    $accion = "Esperando";
+                }
+            }
+            if(!$usuario){
+                $usuario = "-";
+            }
+  
+  
+  
+            echo "  <tr>\n";
+            echo "      <th>$nombre</th>\n";
+            echo "      <th>$auto</th>";
+            echo "      <th>$fecha</th>\n";
+            echo "      <th>$usuario</th>\n";
+            echo "      <th>$accion</th>\n";
+            echo "  </tr>";
+        }
+        echo "</table>\n";
+
+            //Evaluaciones
 
             $queryss = "SELECT entrevista, ponderacion, referencia FROM calificaciones WHERE $solicitud = id_solicitud";
             $resultss = mysqli_query($con,$queryss);

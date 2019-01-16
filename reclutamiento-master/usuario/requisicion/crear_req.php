@@ -27,16 +27,19 @@
                 }
                 //FIN conexion con la base de datos
 
-                //Select para empleador****************************************************************
-                $query = "SELECT empid,empleado FROM empleador ORDER BY nombre";
+				//Select para empleador****************************************************************
+				echo "<label>";
+                $query = "SELECT empid,nombre FROM empleador ORDER BY nombre";
 			    $result = mysqli_query($con,$query);
 			    echo "Empleador: <select id = \"empleador\" name=\"empleador\">\n";
 				while($row = mysqli_fetch_array($result)){
-					    echo "<option value=".$row["empid"].">".$row["empleado"]."</option>\n";
+					    echo "<option value=".$row["empid"].">".$row["nombre"]."</option>\n";
 				}
 				echo "</select><br>\n";
+				echo "</label>";
 				
 				//Select para encargado***************************************************************
+				echo "<label>";
                 $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
 						  INNER JOIN permisos b ON a.permisos = b.id;";
 			    $result = mysqli_query($con,$query);
@@ -47,40 +50,48 @@
 					$permiso = $row[3];
 					echo "<option value=$id>$nombre_completo | $permiso</option>\n";
 				}
-                echo "</select><br>\n";
+				echo "</select><br>\n";
+				echo "</label>";
                 
 				//Select para reculador***************************************************************
+				echo "<label>";
 				$query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
 				INNER JOIN permisos b ON a.permisos = b.id;";
 	  			$result = mysqli_query($con,$query);
-	  			echo "Encargado: <select id = \"encargado\" name=\"reclutador\">\n";
+	  			echo "Reclutador: <select id = \"encargado\" name=\"reclutador\">\n";
 	  			while($row = mysqli_fetch_array($result)){
 		  			$id = $row[0];
 		  			$nombre_completo = $row[1] . " " . $row[2];
 		  			$permiso = $row[3];
 		  			echo "<option value=$id>$nombre_completo | $permiso</option>\n";
 	  			}
-	  			echo "</select><br>\n";
+				  echo "</select><br>\n";
+				  echo "</label>";
 
-                //Select para perfil*****************************************************************
+				//Select para perfil*****************************************************************
+				echo "<label>";
                 $query = "SELECT id_perfil,nombre FROM perfil ORDER BY nombre";
 			    $result = mysqli_query($con,$query);
 			    echo "Perfil: <select id = \"perfil\" name=\"perfil\">\n";
 				while($row = mysqli_fetch_array($result)){
 					    echo "<option value=".$row["id_perfil"].">".$row["nombre"]."</option>\n";
 				}
-                echo "</select><br>\n";
+				echo "</select><br>\n";
+				echo "</label>";
 
-                //Select para obra******************************************************************
+				//Select para obra******************************************************************
+				echo "<label>";
                 $query = "SELECT Workname,IDWork FROM works ORDER BY Workname";
 			    $result = mysqli_query($con,$query);
 			    echo "Obra: <select id = \"obra\" name=\"obra\">\n";
 				while($row = mysqli_fetch_array($result)){
 					    echo "<option value=".$row["IDWork"].">".$row["Workname"]."</option>\n";
 				}
-                echo "</select><br>";
+				echo "</select><br>";
+				echo "</label>";
 
-                //Select para Ciudad****************************************************************
+				//Select para Ciudad****************************************************************
+				echo "<label>";
                 $query = "SELECT officename,officeid FROM offices ORDER BY officename";
 			    $result = mysqli_query($con,$query);
 			    echo "Ciudad: <select id = \"ciudad\" name=\"ciudad\">\n";
@@ -88,6 +99,7 @@
 					    echo "<option value=".$row["officeid"].">".$row["officename"]."</option>\n";
 				}
 				echo "</select><br>\n";
+				echo "</label>";
 				mysqli_close($con); 
 				
 				/*
@@ -96,6 +108,9 @@
 					Work = obra
 				*/
 		    ?>
+
+			<label >Fecha limite: <input type='date' name='fecha_limite'  required></label>
+			<label >Candidatos minimos: <input type='number' name='candidatos_minimos'  required></label>
             
             <input type="checkbox" name="mInterno" value="i"> Mercado interno<br>
             <input type="checkbox" name="mExterno" value="e"> Mercado externo<br>
@@ -115,6 +130,8 @@
 		$perfilID = $_POST["perfil"];
 		$obraID = $_POST["obra"];
 		$ciudadID = $_POST["ciudad"];
+		$candidatos_minimos = $_POST["candidatos_minimos"];
+		$fecha_limite = $_POST["fecha_limite"];
 
 		$mInterno = 0;
 		$mExterno = 0;
@@ -133,8 +150,9 @@
 		date_default_timezone_set("America/Chihuahua");
 		$fecha = date("Y/m/d");
 
-		$sql = "INSERT INTO requisicion(id_encargado,id_reclutador,id_perfil,nombre,mercado_interno	,mercado_externo,fecha_creacion) 
-				 VALUES ($encargadoID,$reclutadorID,$perfilID,'$nombre',$mInterno,$mInterno,'$fecha');";
+		$sql = "INSERT INTO requisicion(id_encargado,id_reclutador,id_perfil,nombre,mercado_interno	,mercado_externo,
+		fecha_creacion,fecha_limite	,candidatos_minimos) 
+				 VALUES ($encargadoID,$reclutadorID,$perfilID,'$nombre',$mInterno,$mInterno,'$fecha','$fecha_limite',$candidatos_minimos);";
 		//echo $sql . "<br>";
 
 		
