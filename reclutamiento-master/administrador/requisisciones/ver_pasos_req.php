@@ -9,6 +9,7 @@
     </head>
     <body>
         <center><h1> Pasos para requisisiones</h1></center>
+        <a href="../menu/index.html">Volver al menu</a>
         <?php
             include '../../config.php';
             $con=mysqli_connect($host,$user,$pass,$name);
@@ -31,7 +32,7 @@
                 echo "      <th>".$row[5]."</th>\n";
                 echo "      <th>".$row[1]."</th>\n";
                 echo "      <th><a href = \"editar_paso.php?id=".$row[2 ]."\">Editar</a></th>\n";
-                echo "      <th><a href = \"borrar_Paso.php?id=".$row[2 ]."\">Eliminar</a></th>\n";
+                echo "      <th><a href = \"borrar_paso.php?id=".$row[2 ]."\">Eliminar</a></th>\n";
                 echo "  </tr>";
             }
             echo "</table>\n"

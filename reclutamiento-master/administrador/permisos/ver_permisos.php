@@ -13,6 +13,7 @@
     <title>Usarios</title>
 </head>
 <body>
+    <a href="../menu/index.html">Volver al Menu</a>
 <?php
     include '../../config.php';
     $conn=mysqli_connect($host,$user,$pass,$name);

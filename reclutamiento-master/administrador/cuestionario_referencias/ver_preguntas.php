@@ -9,6 +9,7 @@
     </head>
     <body>
         <center><h1>Cuestionario para referencias</h1></center>
+        <a href="../menu/index.html">Volver al menu</a>
         <?php
             include '../../config.php';
             $con=mysqli_connect($host,$user,$pass,$name);

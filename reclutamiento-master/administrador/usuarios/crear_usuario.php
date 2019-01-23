@@ -52,7 +52,7 @@
         $permisos = $_POST["permisos"];
         $password = $_POST["password"];
 
-        $conn = mysqli_connect("localhost","root","","reclutamiento");
+		$conn = new mysqli($host,$user,$pass,$name);
         if(mysqli_connect_errno($conn))
         {
             echo 'No se pudo hacer la conexión con la base de datos';

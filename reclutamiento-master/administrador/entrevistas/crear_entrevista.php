@@ -58,6 +58,9 @@
         var request = new XMLHttpRequest();
         request.open("POST", "crear_entrevistaDB.php");
         request.send(formData);
+
+        alert("Se han realizado los cambios. Si no se ven reflejados, por favor recarge la pagina");
+        window.location.href = "ver_entrevistas.php";
     }
 
 </script>

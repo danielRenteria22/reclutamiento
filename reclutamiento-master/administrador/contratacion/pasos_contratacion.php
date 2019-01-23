@@ -77,6 +77,9 @@
         var request = new XMLHttpRequest();
         request.open("POST", "pasos_contratacionDB.php");
         request.send(formData);
+
+        alert("Se han realizado los cambios. Si no se ven reflejados, por favor recarge la pagina");
+        window.location.href = "ver_pasos.php";
     }
 </script>
 

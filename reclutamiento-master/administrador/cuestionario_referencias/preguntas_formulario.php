@@ -53,6 +53,9 @@
         var request = new XMLHttpRequest();
         request.open("POST", "preguntas_formularioDB.php");
         request.send(formData);
+
+        alert("Se han realizado los cambios. Si no se ven reflejados, por favor recarge la pagina");
+        window.location.href = "ver_preguntas.php";
     }
 </script>
 

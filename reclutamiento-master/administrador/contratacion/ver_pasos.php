@@ -9,6 +9,7 @@
        <link rel="stylesheet" type="text/css" href="../../style.css">
     </head>
     <body>
+        <a href="../menu/index.html">Volver al menu</a>
         <center><h1> Pasos para requisisiones</h1></center>
         <?php
             include '../../config.php';
