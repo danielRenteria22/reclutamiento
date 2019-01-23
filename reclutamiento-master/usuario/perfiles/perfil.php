@@ -15,6 +15,7 @@
 </head>
 <body>
     <h1>Perfiles</h1>
+    <a href="../menu/index.html">Volver al menu</a>
     <label ><a href="new_prof.php">Crear pefil</a></label>
     <?php
         include '../../config.php';

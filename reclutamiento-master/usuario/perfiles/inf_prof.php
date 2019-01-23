@@ -15,6 +15,7 @@
 </head>
 <body>
     <h1>Perfil</h1>
+    <a href="perfil.php">Volver</a>
     <?php
         include '../../config.php';
         $id = $_GET["id"];

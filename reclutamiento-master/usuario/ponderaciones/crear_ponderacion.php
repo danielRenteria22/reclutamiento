@@ -67,6 +67,9 @@
         var request = new XMLHttpRequest();
         request.open("POST", "crear_ponderacionesDB.php");
         request.send(formData);
+
+        alert("Se han realizado los cambios. Si no se ven reflejados, por favor recarge la pagina");
+        window.location.href = "ver_ponderaciones.php";
     }
 
 </script>

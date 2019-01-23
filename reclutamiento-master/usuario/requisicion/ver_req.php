@@ -15,6 +15,7 @@
 </head>
 <body>
     <h1>Requisiciones aprovadas</h1>
+    <a href="../menu/index.html">Volver al menu</a>
     <label ><a href="crear_req.php">Crear requisicion</a></label>
     <?php
         include '../../config.php';

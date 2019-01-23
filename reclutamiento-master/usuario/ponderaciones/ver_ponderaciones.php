@@ -14,6 +14,7 @@
 </head>
 <body>
     <h1>Ponderaciones</h1>
+    <a href="../menu/index.html">Volver al menu</a>
     <?php
         include '../../config.php';
         $con=mysqli_connect($host,$user,$pass,$name);

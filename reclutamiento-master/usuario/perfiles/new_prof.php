@@ -127,5 +127,6 @@ mysqli_query($link, "INSERT INTO perfil
 				 					''
 				 				);");
 		$conn->close();
+		header("Location: perfil.php");
 	}
 ?>
