@@ -936,7 +936,7 @@ CREATE TABLE `requisicion` (
 -- Volcado de datos para la tabla `requisicion`
 --
 
-INSERT INTO `requisicion` (`id`, `id_encargado`, `id_reclutador`, `id_perfil`, `nombre`, `mercado_interno`, `mercado_externo`, `autorizacion`, `fecha`, `fecha_limite`, `candidatos_minimos`) VALUES
+INSERT INTO `requisicion` (`id`, `id_encargado`, `id_reclutador`, `id_perfil`, `nombre`, `mercado_interno`, `mercado_externo`, `autorizacion`, `fecha_creacion`, `fecha_limite`, `candidatos_minimos`) VALUES
 (17, 1, 6, 1, 'tarde', 1, 1, 1, '2019-01-16', '2019-01-16', 3);
 
 -- --------------------------------------------------------
