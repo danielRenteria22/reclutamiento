@@ -52,4 +52,5 @@
     ?>
     
 </body>
+<button onclick="location.href='../menu/index.html'">Atras</button>
 </html>
