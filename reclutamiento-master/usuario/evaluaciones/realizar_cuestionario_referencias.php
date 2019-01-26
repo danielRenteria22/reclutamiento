@@ -22,12 +22,15 @@
     //$id_referencia = $_GET["id_referencia"];
 
     $id_solicitud = $_GET["id_solicitud"];
+    $id_referencia = $_GET["id"];
     $conn=mysqli_connect($host,$user,$pass,$name);
+    /*
     $query = "SELECT id FROM referencias_personal WHERE $id_solicitud = id_solicitud";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
         $id_referencia = $row[0];
     }
+    */
 
     $preguntas_id = array();
 
@@ -126,6 +129,8 @@
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        header("Location: ver_respuestas_referencias.php?id_referencia=$id_referencia");
+        $id1 = $_GET["id_solicitud"];
+        $id2 = $_GET["id"];
+        header("Location: ver_respuestas_referencias.php?id=$id2&id_solicitud=$id1");
     }
 ?>

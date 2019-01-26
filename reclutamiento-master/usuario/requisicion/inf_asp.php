@@ -13,8 +13,13 @@
     <link rel="stylesheet" type="text/css" href="../../style.css">
     <script src="main.js"></script>
 </head>
+<?php  
+    $ids = $_GET['id_solicitud'];
+    echo" <button onclick=location.href='contrato.php?id=$ids'>Atras</button>";
+?>
 <body>
     <h1>Vacante</h1>
+
     <?php
         include '../../config.php';
         $con=mysqli_connect($host,$user,$pass,$name);
@@ -69,6 +74,44 @@
                 echo "      <br><b><th>Email:</b> ".$row[7]."</th><br/>\n";
                 echo "</tr>\n";
             }
+echo"<h3>Referenciasl Personales</h3>";
+            $con=mysqli_connect($host,$user,$pass,$name);
+            if (mysqli_connect_errno())
+            {
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
+            $query = "SELECT nombre, direccion, telefono, ocupacion, tiempo FROM referencias WHERE $id = id_candidato";
+            $result = mysqli_query($con,$query);
+            echo "<table border = 1>\n";
+            echo "  <tr>\n";
+            echo "      <th>No. </th>\n";
+            echo "      <th>Nombre </th>\n";
+            echo "      <th>Direccion </th>\n";
+            echo "      <th>Telefono </th>\n";
+            echo "      <th>Ocupacion </th>\n";
+            echo "      <th>Tiempo de Conocerlo </th>\n";
+            echo "</tr>\n";
+            $c=1;
+            
+            while($row = mysqli_fetch_array($result)){
+                $nombre    = $row[0];
+                $direccion = $row[1];
+                $telefono  = $row[2];
+                $ocupacion = $row[3];
+                $tiempo    = $row[4];
+
+                echo "  <tr>\n";
+                echo "      <th>".$c."</th>\n";
+                echo "      <th>".$nombre."</th>\n";
+                echo "      <th>".$direccion."</th>\n";
+                echo "      <th>".$telefono."</th>\n";
+                echo "      <th>".$ocupacion."</th>\n";
+                echo "      <th>".$tiempo."</th>\n";
+                echo "  </tr>";
+                $c++;
+            }
+
+            echo "</table>\n";
 //respuestas de KQ
         echo"<h3>Respuestas KQ</h3>";
             $con=mysqli_connect($host,$user,$pass,$name);

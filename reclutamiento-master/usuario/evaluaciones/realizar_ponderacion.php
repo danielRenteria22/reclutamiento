@@ -43,6 +43,7 @@
             $id = $row[0];
             $consideracion = $row[1];
             $cont++;
+            echo"<br>";
             echo "<p>Consideracion#$cont: $consideracion
                     <select name='c$id' >
                         <option value='1'>1</option>
@@ -57,6 +58,7 @@
                         <option value='10'>10</option>
                     </select>
                   </p>\n";
+            echo"<br>";
         }
         mysqli_close($conn);
     ?>
@@ -93,7 +95,8 @@
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        header("Location: ver_respuestas_ponderacion.php?id_solicitud=$id_solicitud");
+        $ids = $_GET["id_solicitud"];
+        header("Location: ver_respuestas_ponderacion.php?id_solicitud=$ids");
     }
 
 ?>

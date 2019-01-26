@@ -15,7 +15,6 @@
 </head>
 <body>
     <h1>Requisiciones aprovadas</h1>
-    <a href="../menu/index.html">Volver al menu</a>
     <label ><a href="crear_req.php">Crear requisicion</a></label>
     <?php
         include '../../config.php';
@@ -81,6 +80,8 @@
             echo "</table>\n";
             mysqli_close($con); 
     ?>
+    <b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
     
 </body>
 </html>

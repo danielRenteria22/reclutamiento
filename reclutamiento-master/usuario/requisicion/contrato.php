@@ -60,4 +60,5 @@
     ?>
     
 </body>
+<button onclick="location.href='ver_req.php'">Atras</button>
 </html>

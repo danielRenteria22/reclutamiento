@@ -29,6 +29,10 @@
     <input type = "submit" name = "crear" value = "Agregar Pregunta">
             
     </form>
+<?php  
+    $ids = $_GET['idp'];
+    echo" <button onclick=location.href='inf_prof.php?id=$ids'>Atras</button>";
+?>
     
 </body>
 </html>

@@ -15,7 +15,6 @@
 </head>
 <body>
     <h1>Perfiles</h1>
-    <a href="../menu/index.html">Volver al menu</a>
     <label ><a href="new_prof.php">Crear pefil</a></label>
     <?php
         include '../../config.php';
@@ -50,6 +49,8 @@
             }
             echo "</table>\n"
     ?>
+    <b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
     
 </body>
 </html>

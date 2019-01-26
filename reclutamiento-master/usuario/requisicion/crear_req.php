@@ -43,7 +43,9 @@
                 $query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
 						  INNER JOIN permisos b ON a.permisos = b.id;";
 			    $result = mysqli_query($con,$query);
+			    echo"<br></br>";
 			    echo "Encargado: <select id = \"encargado\" name=\"encargado\">\n";
+			    echo"<br></br>";
 				while($row = mysqli_fetch_array($result)){
 					$id = $row[0];
 					$nombre_completo = $row[1] . " " . $row[2];
@@ -58,7 +60,9 @@
 				$query = "SELECT a.id_usuario,a.nombre,a.apellidos,b.nombre FROM usuario a 
 				INNER JOIN permisos b ON a.permisos = b.id;";
 	  			$result = mysqli_query($con,$query);
+	  			echo"<br></br>";
 	  			echo "Reclutador: <select id = \"encargado\" name=\"reclutador\">\n";
+	  			echo"<br></br>";
 	  			while($row = mysqli_fetch_array($result)){
 		  			$id = $row[0];
 		  			$nombre_completo = $row[1] . " " . $row[2];
@@ -72,31 +76,11 @@
 				echo "<label>";
                 $query = "SELECT id_perfil,nombre FROM perfil ORDER BY nombre";
 			    $result = mysqli_query($con,$query);
+			    echo"<br></br>";
 			    echo "Perfil: <select id = \"perfil\" name=\"perfil\">\n";
+			    echo"<br></br>";
 				while($row = mysqli_fetch_array($result)){
 					    echo "<option value=".$row["id_perfil"].">".$row["nombre"]."</option>\n";
-				}
-				echo "</select><br>\n";
-				echo "</label>";
-
-				//Select para obra******************************************************************
-				echo "<label>";
-                $query = "SELECT Workname,IDWork FROM works ORDER BY Workname";
-			    $result = mysqli_query($con,$query);
-			    echo "Obra: <select id = \"obra\" name=\"obra\">\n";
-				while($row = mysqli_fetch_array($result)){
-					    echo "<option value=".$row["IDWork"].">".$row["Workname"]."</option>\n";
-				}
-				echo "</select><br>";
-				echo "</label>";
-
-				//Select para Ciudad****************************************************************
-				echo "<label>";
-                $query = "SELECT officename,officeid FROM offices ORDER BY officename";
-			    $result = mysqli_query($con,$query);
-			    echo "Ciudad: <select id = \"ciudad\" name=\"ciudad\">\n";
-				while($row = mysqli_fetch_array($result)){
-					    echo "<option value=".$row["officeid"].">".$row["officename"]."</option>\n";
 				}
 				echo "</select><br>\n";
 				echo "</label>";
@@ -108,7 +92,7 @@
 					Work = obra
 				*/
 		    ?>
-
+		    <br><br>
 			<label >Fecha limite: <input type='date' name='fecha_limite'  required></label>
 			<label >Candidatos minimos: <input type='number' name='candidatos_minimos'  required></label>
             
@@ -117,6 +101,8 @@
 			<input type = "submit" name = "crear" value = "Crear requisision">
             
     </form>
+    <b><b>
+        <button onclick="location.href='ver_req.php'">Atras</button>
     
 </body>
 </html>
@@ -128,8 +114,6 @@
 		$encargadoID = $_POST["encargado"];
 		$reclutadorID = $_POST["reclutador"];
 		$perfilID = $_POST["perfil"];
-		$obraID = $_POST["obra"];
-		$ciudadID = $_POST["ciudad"];
 		$candidatos_minimos = $_POST["candidatos_minimos"];
 		$fecha_limite = $_POST["fecha_limite"];
 

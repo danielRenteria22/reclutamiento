@@ -20,10 +20,25 @@
 <?php
     include '../../config.php';
     $id_solicitud = $_GET["id_solicitud"];
+    //******************
+    $id_entrevista;
+    $id_perfil;
+    $id_requisicion;
+    //******************
     $conn=mysqli_connect($host,$user,$pass,$name);
-    $query = "SELECT id FROM entrevista WHERE $id_solicitud = id_solicitud";
+    $query = "SELECT id_requisicion FROM solicitudes WHERE $id_solicitud = id";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
+        $id_requisicion = $row[0];
+    }
+    $querys = "SELECT id_perfil FROM requisicion WHERE $id_requisicion = id";
+    $results = mysqli_query($conn, $querys);
+    while($row = mysqli_fetch_array($results)){
+        $id_perfil = $row[0];
+    }
+    $querys = "SELECT entrevista FROM perfil WHERE $id_perfil = id_perfil";
+    $results = mysqli_query($conn, $querys);
+    while($row = mysqli_fetch_array($results)){
         $id_entrevista = $row[0];
     }
 

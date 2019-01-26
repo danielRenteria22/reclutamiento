@@ -28,6 +28,10 @@
             ?>
             <input type = "submit" name = "crear" value = "Crear">
     </form>
+<?php  
+    $ids = $_GET['idp'];
+    echo" <button onclick=location.href='inf_prof.php?id=$ids'>Atras</button>";
+?>
 </body>
 </html>
 

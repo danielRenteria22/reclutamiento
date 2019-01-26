@@ -20,12 +20,15 @@
 <?php
     include '../../config.php';
     $id_solicitud = $_GET["id_solicitud"];
+    $id_referencia = $_GET["id"];
     $conn=mysqli_connect($host,$user,$pass,$name);
+    /*
     $query = "SELECT id FROM referencias_personal WHERE $id_solicitud = id_solicitud";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
         $id_referencia = $row[0];
     }
+    */
     $preguntas_id = array();
 
     $conn=mysqli_connect($host,$user,$pass,$name);

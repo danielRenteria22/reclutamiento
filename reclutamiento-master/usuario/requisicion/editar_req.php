@@ -16,7 +16,7 @@
 </head>
 <body>
     <h1>Requisicion</h1>
-    <a href="ver_req.php">Volver a requisiciones</a>
+        <button onclick="location.href='ver_req.php'">Atras</button>
     <form enctype="multipart/form-data" action="" method="POST">
     <?php
          $id_req = $_GET['id'];

@@ -21,13 +21,28 @@
     include '../../config.php';
     //$id_entrevista = $_GET["id_entrevista"];
     $id_solicitud = $_GET["id_solicitud"];
+
+    //******************
+    $id_entrevista;
+    $id_perfil;
+    $id_requisicion;
+    //******************
     $conn=mysqli_connect($host,$user,$pass,$name);
-    $query = "SELECT id FROM entrevista WHERE $id_solicitud = id_solicitud";
+    $query = "SELECT id_requisicion FROM solicitudes WHERE $id_solicitud = id";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
+        $id_requisicion = $row[0];
+    }
+    $querys = "SELECT id_perfil FROM requisicion WHERE $id_requisicion = id";
+    $results = mysqli_query($conn, $querys);
+    while($row = mysqli_fetch_array($results)){
+        $id_perfil = $row[0];
+    }
+    $querys = "SELECT entrevista FROM perfil WHERE $id_perfil = id_perfil";
+    $results = mysqli_query($conn, $querys);
+    while($row = mysqli_fetch_array($results)){
         $id_entrevista = $row[0];
     }
-
     $preguntas_id = array();
 
     $conn=mysqli_connect($host,$user,$pass,$name);
@@ -100,6 +115,8 @@
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        header("Location: ver_respuestas_entrevista.php?id_entrevista=4&id_solicitud=1");
+        $id = $_GET["id"];
+        $id_solicitud = $_GET["id_solicitud"];
+        header("Location: ver_respuestas_entrevista.php?id=$id&id_solicitud=$id_solicitud");
     }
 ?>

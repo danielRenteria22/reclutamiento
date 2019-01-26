@@ -15,7 +15,7 @@
 </head>
 <body>
     <h1>Perfil</h1>
-    <a href="perfil.php">Volver</a>
+        <button onclick="location.href='perfil.php'">Atras</button>
     <?php
         include '../../config.php';
         $id = $_GET["id"];

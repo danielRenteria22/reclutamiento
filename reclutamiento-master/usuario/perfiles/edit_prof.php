@@ -9,6 +9,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Editar Perfil</title>
+<?php  
+    $ids = $_GET['id'];
+    echo" <button onclick=location.href='inf_prof.php?id=$ids'>Atras</button>";
+?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../../style.css">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />

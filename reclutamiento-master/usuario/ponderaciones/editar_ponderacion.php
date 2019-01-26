@@ -54,7 +54,8 @@
     
     
     </form>
-    
+    <b><b>
+        <button onclick="location.href='ver_ponderaciones.php'">Atras</button>
     
 </body>
 </html>
