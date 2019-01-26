@@ -13,5 +13,5 @@
     
      $query = "DELETE FROM offices WHERE officeid = $id";
     mysqli_query($con,$query);
-    header("index.php");
+    header("Location: index.php");
 ?>

@@ -33,6 +33,8 @@
     ?>
     <input type = "submit" name = "crear" value = "Crear perfil">
     </form>
+    <b><b>
+        <button onclick="location.href='index.php'">Atras</button>
 </body>
 </html>
 

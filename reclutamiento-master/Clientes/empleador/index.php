@@ -42,6 +42,8 @@
             }
             echo "</table>\n"
     ?>
+    <b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
     
 </body>
 </html>
