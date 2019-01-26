@@ -15,6 +15,9 @@
     $query = "DELETE FROM entrevista WHERE id_entrevista = $id_entrevista";
     mysqli_query($con,$query);
 
+    $querys = "DELETE FROM pregunta_entrevista WHERE id_entrevista = $id_entrevista";
+    mysqli_query($con,$querys);
+
     $url = "ver_entrevistas.php";
     header( "Location: $url" );
 ?>

@@ -65,6 +65,9 @@
 ?>
 
 <p><a href="crear_usuario.php">Crear usuario</a></p>
+</form>
+    <b><b>
+    <button onclick="location.href='../menu/index.html'">Atras</button>
     
 </body>
 </html>

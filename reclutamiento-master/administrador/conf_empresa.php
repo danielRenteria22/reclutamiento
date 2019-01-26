@@ -28,6 +28,8 @@
             <label>RFC<input type="text" name="rfc"></label><br>
             <input type = "submit" class = "inputEnviar" value = "Configurar" name = "confg">
         </form>
+        <b><b>
+        <button onclick="location.href='menu/index.html'">Atras</button>
     </body>
 </html>
 

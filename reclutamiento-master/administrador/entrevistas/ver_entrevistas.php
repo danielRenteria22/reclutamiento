@@ -50,5 +50,7 @@
     ?>
 
     <label ><a href="crear_entrevista.php">Crear</a></label>
+    <b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
 </body>
 </html>

@@ -39,5 +39,8 @@
             echo "</table\n"
         ?>
         <label ><a href="pasos_contratacion.php">Agregar pasos</a></label>
+        
     </body>
+    <b><b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
 </html>

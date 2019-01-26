@@ -50,6 +50,8 @@
 ?>
 
 <p><a href="agregar_permisos.php">Agregar permiso</a></p>
+<b><b>
+<button onclick="location.href='../menu/index.html'">Atras</button>
     
 </body>
 </html>

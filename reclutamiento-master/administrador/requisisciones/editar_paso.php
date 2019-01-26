@@ -52,6 +52,8 @@
     ?>
     <input type = "submit" class = "inputEditar" value = "Editar" name = "editar">
     </form>
+    <b><b>
+        <button onclick="location.href='ver_pasos_req.php'">Atras</button>
 </body>
 </html>
 

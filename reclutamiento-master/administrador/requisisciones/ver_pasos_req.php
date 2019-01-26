@@ -38,5 +38,7 @@
             echo "</table>\n"
         ?>
         <label ><a href="pasos_requisision.php">Agregar pasos</a></label>
+        <b><b>
+        <button onclick="location.href='../menu/index.html'">Atras</button>
     </body>
 </html>
